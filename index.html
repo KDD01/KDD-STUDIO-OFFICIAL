@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KDD STUDIO | Creative Design</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#070b14;
+  --card:#0f172a;
+  --primary:#00e5ff;
+  --secondary:#ff2fd0;
+  --text:#e5e7eb;
+  --muted:#9ca3af;
+  --radius:18px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:radial-gradient(circle at top,var(--card),var(--bg));color:var(--text);}
+
+/* HEADER & NAV */
+header{
+  position:fixed;top:0;width:100%;
+  background:rgba(7,11,20,.85);
+  backdrop-filter:blur(12px);
+  z-index:1000;
+}
+nav{
+  max-width:1200px;margin:auto;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:15px 20px;
+}
+/* SHINING KDD STUDIO TEXT */
+nav h1{
+  font-size:26px;
+  background:linear-gradient(90deg,var(--primary),var(--secondary),var(--primary));
+  -webkit-background-clip:text;
+  color:transparent;
+  animation:shineText 3s linear infinite;
+}
+@keyframes shineText{
+  0%{background-position:0%;}
+  50%{background-position:100%;}
+  100%{background-position:0%;}
+}
+nav h1{
+  background-size:200% auto;
+}
+
+/* NAVIGATION BUTTONS DESIGN */
+nav ul{
+  list-style:none;
+  display:flex;
+  gap:20px;
+}
+nav ul li{
+  position:relative;
+}
+nav ul a{
+  display:inline-block;
+  padding:10px 20px;
+  border-radius:50px;
+  background:linear-gradient(135deg,rgba(0,229,255,.2),rgba(255,47,208,.2));
+  color:var(--text);
+  font-weight:600;
+  text-decoration:none;
+  transition: all .4s ease;
+  box-shadow:0 4px 15px rgba(0,229,255,.2), 0 4px 15px rgba(255,47,208,.2);
+}
+nav ul a:hover{
+  background:linear-gradient(135deg,var(--primary),var(--secondary));
+  color:#000;
+  box-shadow:0 5px 25px rgba(0,229,255,.5), 0 5px 25px rgba(255,47,208,.5);
+  transform:translateY(-3px) scale(1.05);
+}
+
+/* BUTTONS */
+.btn{
+  padding:12px 28px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(135deg,var(--primary),var(--secondary));
+  color:#000;font-weight:600;cursor:pointer;
+  box-shadow:0 5px 25px rgba(0,229,255,.4);
+  font-size:16px;
+  transition: all .4s ease;
+}
+.btn:hover{
+  transform:translateY(-5px) scale(1.05);
+  box-shadow:0 10px 45px rgba(255,47,208,.6);
+}
+
+/* PAGES */
+.page{display:none;}
+.page.active{display:block;}
+section{
+  min-height:100vh;
+  padding:140px 20px 80px;
+  max-width:1200px;margin:auto;
+}
+
+/* HERO */
+.hero{
+  display:grid;
+  grid-template-columns:1.2fr 1fr;
+  gap:40px;align-items:center;
+}
+.hero h2{font-size:48px;line-height:1.2;}
+.hero span{
+  background:linear-gradient(90deg,var(--primary),var(--secondary));
+  -webkit-background-clip:text;color:transparent;
+}
+.hero p{margin:20px 0;color:var(--muted);}
+.hero-card{
+  padding:16px;
+  border-radius:var(--radius);
+  background:linear-gradient(145deg,#0b1220,#020617);
+}
+.hero-img{
+  position:relative;
+  border-radius:14px;
+  overflow:hidden;
+  animation:float 6s infinite,pulse 4s infinite;
+  box-shadow:0 0 60px rgba(0,229,255,.7);
+}
+.hero-img img{width:100%;display:block;object-fit:cover;}
+.hero-img::before{
+  content:"";
+  position:absolute;top:0;left:-150%;
+  width:50%;height:100%;
+  background:linear-gradient(to right,transparent,rgba(255,255,255,.7),transparent);
+  transform:skewX(-25deg);
+  animation:shine 3.5s infinite;
+}
+
+/* SERVICES GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:25px;
+}
+.card{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:25px;
+  cursor:pointer;
+  transition:.4s;
+  text-align:center;
+}
+.card:hover{transform:translateY(-10px);box-shadow:0 0 45px rgba(0,229,255,.5);}
+.card i{font-size:42px;color:var(--primary);}
+.card h3{margin-top:12px;}
+
+/* SERVICE IMAGE */
+.service-img{
+  margin:40px 0;
+  border-radius:20px;
+  overflow:hidden;
+  position:relative;
+  animation:float 6s infinite,pulse 4s infinite;
+  box-shadow:0 0 70px rgba(0,229,255,.8);
+}
+.service-img img{
+  width:100%;
+  display:block;
+  object-fit:cover;
+}
+.service-img::before{
+  content:"";
+  position:absolute;top:0;left:-150%;
+  width:50%;height:100%;
+  background:linear-gradient(to right,transparent,rgba(255,255,255,.6),transparent);
+  transform:skewX(-25deg);
+  animation:shine 3.5s infinite;
+}
+
+/* PRICES */
+.price{color:var(--secondary);font-weight:600;margin-top:10px;}
+
+/* ABOUT */
+.about-box{
+  background:var(--card);
+  padding:40px;
+  border-radius:18px;
+  box-shadow:0 0 50px rgba(0,229,255,.5);
+  line-height:1.8;
+}
+
+/* ORDER FORM */
+.order-box{
+  background:var(--card);
+  padding:30px;
+  border-radius:18px;
+  box-shadow:0 0 40px rgba(0,229,255,.5);
+  margin-top:30px;
+}
+.order-box input,.order-box textarea{
+  width:100%;
+  padding:12px;
+  border-radius:10px;
+  border:none;
+  margin-bottom:15px;
+  background:#020617;
+  color:white;
+  font-size:15px;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:40px;
+  color:var(--muted);
+  border-top:1px solid rgba(255,255,255,.05);
+}
+
+/* ANIMATIONS */
+@keyframes shine{0%{left:-150%}60%{left:150%}100%{left:150%}}
+@keyframes float{50%{transform:translateY(-12px)}}
+@keyframes pulse{50%{box-shadow:0 0 120px rgba(255,47,208,.9)}}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;gap:30px;}
+  .hero h2{font-size:36px;}
+  section{padding:120px 15px 80px;}
+}
+@media(max-width:500px){
+  nav ul{flex-direction:column;gap:15px;margin-top:10px;}
+  .btn{padding:10px 20px;font-size:14px;}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<nav>
+  <h1>KDD STUDIO</h1>
+  <ul>
+    <li><a onclick="showPage('home')">HOME</a></li>
+    <li><a onclick="showPage('services')">SERVICES</a></li>
+    <li><a onclick="showPage('about')">ABOUT US</a></li>
+    <li><a onclick="showPage('cart')">CART (<span id="cartCount">0</span>)</a></li>
+  </ul>
+  <button class="btn" onclick="showPage('services')">Order Now</button>
+</nav>
+</header>
+
+<!-- HOME -->
+<section id="home" class="page active">
+<div class="hero">
+  <div>
+    <h2>3D <span>Home Designing</span><br>Modern <span>Architecture</span></h2>
+    <p>Professional 3D house designs, realistic renders & walkthrough videos.</p>
+    <button class="btn" onclick="showPage('services')">View Services</button>
+    <p>At KDD STUDIO, we specialize in turning your ideas into reality through realistic 3D home designs, architectural visualizations, and immersive walkthrough videos. Our team combines creativity, precision, and cutting-edge technology to deliver stunning, professional designs tailored to your needs.</p>
+  </div>
+  <div class="hero-card">
+    <div class="hero-img">
+      <img src="./dvni9.png">
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="page">
+<h2>Our Services</h2>
+<div class="grid" style="margin-top:40px">
+  <div class="card" onclick="showPage('service3d')">
+    <i class='bx bxs-home'></i>
+    <h3>3D Home Designing</h3>
+  </div>
+  <div class="card" onclick="showPage('servicetiktok')">
+    <i class='bx bxl-tiktok'></i>
+    <h3>TikTok Promotion</h3>
+  </div>
+  <div class="card" onclick="showPage('servicegraphic')">
+    <i class='bx bxs-paint'></i>
+    <h3>Graphic Designing</h3>
+  </div>
+</div>
+</section>
+
+<!-- 3D -->
+<section id="service3d" class="page">
+<h2>3D HOME DESIGNING</h2>
+<div class="service-img"><img src="front.png"></div>
+<div class="service-img"><img src="drone view.png"></div>
+<div class="service-img"><img src="UPADYA project drone view.png"></div>
+
+<center><h3>Our Packages</h3>
+<div class="price">Rs.100,000.00 Onward</div><br>
+<h3>With Full walkthrough animation Video Packages</h3>
+<div class="price">Rs.250000.00 Onward</div>
+<br>
+<button class="btn" onclick="addToCart('3D Home Designing',100000)">ADD TO CART</button></center>
+</section>
+
+<!-- TIKTOK -->
+<section id="servicetiktok" class="page">
+<h2>TikTok Promotion</h2>
+<div class="service-img"><img src="tiktok post.png"></div>
+<center><h3>Our Packages</h3>
+<div class="price">Rs.25,000.00 Onward</div>
+<br><button class="btn" onclick="addToCart('TikTok Promotion',25000)">ADD TO CART</button>
+</section></center>
+
+<!-- GRAPHIC -->
+<section id="servicegraphic" class="page">
+<h2>Graphic Designing</h2>
+<div class="service-img"><img src="NEW MARKETING POST.png"></div>
+<center><h3>Our Packages</h3>
+<div class="price">Rs.15,000.00 Onward</div>
+<br><button class="btn" onclick="addToCart('Graphic Designing',15000)">ADD TO CART</button>
+</section></center>
+
+<!-- ABOUT -->
+<section id="about" class="page">
+<h2>About Us</h2>
+<div class="about-box">
+<p><b>KDD STUDIO</b> is a creative design studio specialized in modern 3D home designing, architectural visualization and digital promotions.</p>
+<p>Our purpose is to deliver high quality, realistic and affordable digital design solutions for individuals and businesses.</p>
+<div class="service-img"><img src="dinush dcps.png"></div>
+</div>
+<br><br>
+<CENTER><h3>Developed By DINUSH DILHARA</h3></CENTER>
+<CENTER><H3>Designed By DINUSH DILHARA</H3></CENTER>
+<CENTER><H3>17 Years Old</H3></CENTER>
+<CENTER><H3>Owner Of KDD STUDIO</H3></CENTER>
+<CENTER><H3>Owner Of Dinu Geek Youtube Channel</H3></CENTER>
+</section>
+
+<!-- CART -->
+<section id="cart" class="page">
+<h2>Your Cart</h2>
+<div id="cartItems" style="margin-top:20px"></div>
+
+<div class="order-box">
+<h3>Order Details</h3>
+<input id="name" placeholder="Your Name">
+<input id="phone" placeholder="Phone Number">
+<input id="location" placeholder="Location">
+<textarea id="note" placeholder="Additional Notes"></textarea>
+<button class="btn" onclick="sendWhatsApp()">Order via WhatsApp</button>
+</div>
+</section>
+
+<footer>
+© 2026 KDD STUDIO <br>
+<span style="font-size:14px">Developed By Dinush Dilhara</span>
+</footer>
+
+<script>
+let cart=[];
+
+function showPage(id){
+ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+ window.scrollTo(0,0);
+}
+
+function addToCart(name,price){
+ cart.push({name,price});
+ document.getElementById('cartCount').innerText=cart.length;
+ renderCart();
+ alert(name+" added to cart");
+}
+
+function renderCart(){
+ let html="",total=0;
+ cart.forEach(i=>{
+  total+=i.price;
+  html+=`<p>${i.name} - Rs.${i.price.toLocaleString()}</p>`;
+ });
+ html+=`<hr><b>Total: Rs.${total.toLocaleString()}</b>`;
+ document.getElementById('cartItems').innerHTML=html;
+}
+
+function sendWhatsApp(){
+ let msg="Order Details:%0A";
+ cart.forEach(i=>msg+=`${i.name} - Rs.${i.price}%0A`);
+ msg+=`%0ATotal: Rs.${cart.reduce((s,i)=>s+i.price,0)}%0A`;
+ msg+=`Name: ${name.value}%0APhone: ${phone.value}%0ALocation: ${location.value}%0ANote: ${note.value}`;
+ window.open(`https://wa.me/94779956510?text=${msg}`,'_blank');
+}
+</script>
+
+</body>
+</html>
+
